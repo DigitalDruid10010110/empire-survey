@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imperial Survey</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <h1 id="title">Imperial Survey</h1>
+    <p id="description">Lend your voice to the Empire</p>
+
+    <!-- Survey Form -->
+    <form id="survey-form">
+<section id="personal-info">
+  <h2>Personal Information</h2>
+      <!-- Name input -->
+      <label id="name-label" for="name">First Name</label>
+      <input type="text" id="name" name="name" placeholder="Enter your first name" required>
+      <!-- Surname input -->
+<label id="surname-label" for="surname">Surname</label>
+      <input type="text" id="surname" name="name" placeholder="Enter your surname" required>
+      <!-- Email input -->
+      <label id="email-label" for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+</section>
+<section id="demographics">
+  <h2>Demographics</h2>
+   <!-- Age input -->
+      <label id="number-label" for="age">Age</label>
+      <input type="number" id="number" name="age" min="18" max="120" placeholder="Enter your age" required>
+      <!-- Role in the Empire Dropdown -->
+      <label id="role-label" for="dropdown">Your role in the Empire</label>
+      <select id="dropdown" name="role" required onchange="showOtherRoleField()">
+        <option value="">(Select one)</option>
+        <option value="citizen">Citizen</option>
+        <option value="legionary">Legionary</option>
+        <option value="senator">Senator</option>
+        <option value="other">Other</option> <!-- Added the Other option -->
+      </select>
+
+      <!-- Textarea for Other Role -->
+      <div id="other-role-container" style="display:none;">
+        <label id="other-role-label" for="other-role">Please describe your role</label>
+        <textarea id="other-role" name="other-role" placeholder="Describe your role"></textarea>
+      </div>
+
+      <!-- JavaScript to Show/Hide Text Area and Add/Remove Required -->
+      <script>
+        function showOtherRoleField() {
+          var dropdown = document.getElementById('dropdown');
+          var otherRoleContainer = document.getElementById('other-role-container');
+          var otherRoleTextarea = document.getElementById('other-role');
+
+          if (dropdown.value === 'other') {
+            otherRoleContainer.style.display = 'block'; // Show the text area
+            otherRoleTextarea.setAttribute('required', true); // Make it required
+          } else {
+            otherRoleContainer.style.display = 'none'; // Hide the text area
+            otherRoleTextarea.removeAttribute('required'); // Remove required
+          }
+        }
+      </script>
+      <section id="service">
+        <h2>Service</h2>
+    <!-- Service to the Empire Radio Buttons -->
+<p>How do you serve the Empire?</p>
+<div class="radio-group">
+  <label for="loyal">
+    <input type="radio" id="loyal" name="service" value="loyal" required> Loyal Citizen
+  </label>
+  
+  <label for="disgruntled">
+    <input type="radio" id="disgruntled" name="service" value="disgruntled" required> Disgruntled Citizen
+  </label>
+</div>
+</section>
+<section>
+<h2>Privileges</h2>
+<!-- Privileges Checkboxes -->
+<p>Which privileges do you enjoy?</p>
+<div class="checkbox-group">
+  <label for="ceaser">
+    <input type="checkbox" id="ceaser" name="privileges" value="ceaser"> Serving the Ceaser
+  </label>
+  
+  <label for="wine">
+    <input type="checkbox" id="wine" name="privileges" value="wine"> Wine
+  </label>
+  
+  <label for="bread">
+    <input type="checkbox" id="bread" name="privileges" value="bread"> Bread
+  </label>
+  
+  <label for="gladiators">
+    <input type="checkbox" id="gladiators" name="privileges" value="gladiators"> Gladiator Games
+  </label>
+</div>
+</section>
+<section>
+<!-- Submit Button -->
+<button id="submit" type="submit">Submit to the Empire</button>
+</section>
+    </form>
+  </body>
+</html>
